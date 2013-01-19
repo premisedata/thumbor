@@ -81,12 +81,13 @@ Config.define('MIXED_STORAGE_CRYPTO_STORAGE', 'thumbor.storages.no_storage', 'Mi
 Config.define('MIXED_STORAGE_DETECTOR_STORAGE', 'thumbor.storages.no_storage', 'Mixed Storage detector information storage. This must be the full name of a python module (python must be able to import it)', 'Mixed Storage')
 
 # S3 STORAGE OPTIONS
-Config.define('S3_SECRET_ACCESS_KEY', None, '', 'S3 Storage')
-Config.define('S3_ACCESS_KEY_ID', None, '', 'S3 Storage')
-Config.define('S3_BUCKET', 'premise-thumbor', '', 'S3 Storage')
+Config.define('S3_SECRET_ACCESS_KEY', None, 'Your secret access key for Amazon Web Services', 'S3 Storage')
+Config.define('S3_ACCESS_KEY_ID', None, 'Your access key ID', 'S3 Storage')
+Config.define('S3_BUCKET', 'premise-thumbor', 'The bucket to POST images to in S3', 'S3 Storage')
+Config.define('S3_IGNORE_REGEXES', [], 'Regular expressions for URLs to NOT save in S3', 'S3 Storage')
 
 # FAILOVER STORAGE OPTIONS
-Config.define('FAILOVER_STORAGE_OPTIONS', ['thumbor.storages.no_storage'], 'Modules containing Storage() classes', 'Failover Storage')
+Config.define('FAILOVER_STORAGE_OPTIONS', ['thumbor.storages.no_storage'], 'Modules containing Storage() classes. Modules specified here are used in order when using thumbor.storages.failover_storage. For example, you can use thumbor.storages.redis_storage, then fall back on thumbor.storages.file_storage if the former doesn\'t have the data you\'re looking for', 'Failover Storage')
 
 # JSON META ENGINE OPTIONS
 Config.define('META_CALLBACK_NAME', None, 'The callback function name that should be used by the META route for JSONP access', 'Meta')

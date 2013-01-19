@@ -40,23 +40,29 @@ class Storage(BaseStorage):
         return path
 
     def get_crypto(self, path):
-        for s in self.storages:
+        for i, s in enumerate(self.storages):
             result = s.get_crypto(path)
             if result:
+                for s2 in self.storages[0:i]:
+                    s2.put_crypto(path)
                 return result
         return None
 
     def get_detector_data(self, path):
-        for s in self.storages:
+        for i, s in enumerate(self.storages):
             result = s.get_detector_data(path)
             if result:
+                for s2 in self.storages[0:i]:
+                    s2.put_detector_data(path, result)
                 return result
         return None
 
     def get(self, path):
-        for s in self.storages:
+        for i, s in enumerate(self.storages):
             result = s.get(path)
             if result:
+                for s2 in self.storages[0:i]:
+                    s2.put_detector_data(path, result)
                 return result
         return None
 
