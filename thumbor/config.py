@@ -85,6 +85,9 @@ Config.define('S3_SECRET_ACCESS_KEY', None, '', 'S3 Storage')
 Config.define('S3_ACCESS_KEY_ID', None, '', 'S3 Storage')
 Config.define('S3_BUCKET', 'premise-thumbor', '', 'S3 Storage')
 
+# FAILOVER STORAGE OPTIONS
+Config.define('FAILOVER_STORAGE_OPTIONS', ['thumbor.storages.no_storage'], 'Modules containing Storage() classes', 'Failover Storage')
+
 # JSON META ENGINE OPTIONS
 Config.define('META_CALLBACK_NAME', None, 'The callback function name that should be used by the META route for JSONP access', 'Meta')
 

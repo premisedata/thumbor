@@ -15,8 +15,11 @@ from boto.s3.key import Key
 from thumbor.storages import BaseStorage
 
 class Storage(BaseStorage):
+    """Uses Amazon S3 for storage"""
 
     def __init__(self, context):
+        BaseStorage.__init__(self, context)
+
         access_key = context.config.S3_ACCESS_KEY_ID
         secret_key = context.config.S3_SECRET_ACCESS_KEY
         bucket = context.config.S3_BUCKET
@@ -32,10 +35,10 @@ class Storage(BaseStorage):
         k.key = path
 
         try:
-          k.set_contents_from_string(bytes)
-          return path
+            k.set_contents_from_string(bytes)
+            return path
         except:
-          return None
+            return None
 
     def put_crypto(self, path):
         return path
@@ -48,9 +51,9 @@ class Storage(BaseStorage):
         k.key = path
 
         try:
-          return s3.get_contents_from_string(bytes)
+            return s3.get_contents_from_string(bytes)
         except:
-          return None
+            return None
 
     def get_crypto(self, path):
         return None
