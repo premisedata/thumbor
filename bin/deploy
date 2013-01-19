@@ -1,0 +1,27 @@
+#!/bin/bash -eu
+
+name=thumbor
+
+show_cmd() {
+  echo "$@"
+  "$@"
+}
+
+[ $# -eq 1 ] || {
+  echo "Usage: `basename $0` <version>"
+  echo
+  echo "Existing versions:"
+  s3cmd ls s3://premise-deploy/code/ | grep $name | sort | awk '{print $4}'
+  exit 1
+}
+version="$1"
+
+[ -z "`git status --porcelain`" ] || {
+  echo "ERROR: Refusing to release with uncommitted changes"
+  exit 1
+}
+
+show_cmd git tag "$version"
+show_cmd git push --tags
+
+show_cmd deploy-tar "$name" "$version"

@@ -1,0 +1,11 @@
+#!/bin/bash -eu
+targe=$1
+
+show_cmd() {
+  echo "$@"
+  "$@"
+}
+
+# h follows symlinks
+
+show_cmd tar hvczf $targe --exclude=.git --exclude=tmp/cache .
