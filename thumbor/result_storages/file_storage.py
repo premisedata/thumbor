@@ -20,6 +20,10 @@ from thumbor.utils import logger
 
 class Storage(BaseStorage):
 
+    def __init__(self, context):
+        BaseStorage.__init__(self, context)
+        logger.debug('Initializing File Result Storage')
+
     def __ensure_dir(self, path):
         if not exists(path):
             os.makedirs(path)

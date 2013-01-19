@@ -105,6 +105,9 @@ Config.define('RESULT_STORAGE_EXPIRATION_SECONDS', 0, 'Expiration in seconds of 
 Config.define('RESULT_STORAGE_FILE_STORAGE_ROOT_PATH', join(tempfile.gettempdir(), 'thumbor', 'result_storage'), 'Path where the Result storage will store generated images', 'Result Storage')
 Config.define('RESULT_STORAGE_STORES_UNSAFE', False, 'Indicates whether unsafe requests should also be stored in the Result Storage', 'Result Storage')
 
+# WRAPPER RESULT STORAGE
+Config.define('WRAPPER_RESULT_STORAGE', 'thumbor.storages.file_storage', 'Regular Storage type to wrap', 'Wrapper Result Storage')
+
 # QUEUED DETECTOR REDIS OPTIONS
 Config.define('REDIS_QUEUE_SERVER_HOST', 'localhost', 'Server host for the queued redis detector', 'Queued Redis Detector')
 Config.define('REDIS_QUEUE_SERVER_PORT', 6379, 'Server port for the queued redis detector', 'Queued Redis Detector')
