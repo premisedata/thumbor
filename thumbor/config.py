@@ -25,7 +25,7 @@ Config.define('MAX_AGE_TEMP_IMAGE', 0, "Indicates the Max AGE header in seconds 
 Config.define('RESPECT_ORIENTATION', False, 'Indicates whether thumbor should rotate images that have an Orientation EXIF header', 'Imaging')
 
 Config.define('LOADER',  'thumbor.loaders.http_loader', 'The loader thumbor should use to load the original image. This must be the full name of a python module (python must be able to import it)', 'Extensibility')
-Config.define('STORAGE', 'thumbor.storages.file_storage', 'The file storage thumbor should use to store original images. This must be the full name of a python module (python must be able to import it)', 'Extensibility')
+Config.define('STORAGE', 'thumbor.storages.s3_storage', 'The file storage thumbor should use to store original images. This must be the full name of a python module (python must be able to import it)', 'Extensibility')
 Config.define('RESULT_STORAGE', None, 'The result storage thumbor should use to store generated images. This must be the full name of a python module (python must be able to import it)', 'Extensibility')
 Config.define('ENGINE', 'thumbor.engines.pil', 'The imaging engine thumbor should use to perform image operations. This must be the full name of a python module (python must be able to import it)', 'Extensibility')
 
@@ -79,6 +79,11 @@ Config.define('REDIS_STORAGE_SERVER_PASSWORD', None, 'Redis storage server passw
 Config.define('MIXED_STORAGE_FILE_STORAGE', 'thumbor.storages.no_storage', 'Mixed Storage file storage. This must be the full name of a python module (python must be able to import it)', 'Mixed Storage')
 Config.define('MIXED_STORAGE_CRYPTO_STORAGE', 'thumbor.storages.no_storage', 'Mixed Storage signing key storage. This must be the full name of a python module (python must be able to import it)', 'Mixed Storage')
 Config.define('MIXED_STORAGE_DETECTOR_STORAGE', 'thumbor.storages.no_storage', 'Mixed Storage detector information storage. This must be the full name of a python module (python must be able to import it)', 'Mixed Storage')
+
+# S3 STORAGE OPTIONS
+Config.define('S3_SECRET_ACCESS_KEY', None, '', 'S3 Storage')
+Config.define('S3_ACCESS_KEY_ID', None, '', 'S3 Storage')
+Config.define('S3_BUCKET', 'premise-thumbor', '', 'S3 Storage')
 
 # JSON META ENGINE OPTIONS
 Config.define('META_CALLBACK_NAME', None, 'The callback function name that should be used by the META route for JSONP access', 'Meta')
